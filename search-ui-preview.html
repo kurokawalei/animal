@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜尋 UI 設計方案預覽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Noto Sans TC", "Nunito", sans-serif;
+            background: linear-gradient(135deg, #FDF8F0 0%, #F5E6D3 50%, #FDF8F0 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #5C3D2E;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #9A7A60;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .preview-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .preview-card h2 {
+            color: #5C3D2E;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .preview-card .desc {
+            color: #9A7A60;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .preview-demo {
+            background: #FDF8F0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #F5E6D3;
+        }
+        
+        /* === 方案 1: 頂部搜尋欄 === */
+        .scheme-1 input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E8845A;
+            border-radius: 25px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .scheme-1 input:focus {
+            outline: none;
+            border-color: #E8845A;
+            box-shadow: 0 0 0 3px rgba(232, 132, 90, 0.1);
+        }
+        
+        .scheme-1 .filters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .scheme-1 select {
+            padding: 8px 12px;
+            border: 1px solid #F5E6D3;
+            border-radius: 8px;
+            font-size: 0.9em;
+            background: white;
+        }
+        
+        /* === 方案 2: 平衡式 === */
+        .scheme-2 .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .scheme-2 input,
+        .scheme-2 select {
+            padding: 12px 14px;
+            border: 2px solid #F5E6D3;
+            border-radius: 10px;
+            font-size: 0.95em;
+            width: 100%;
+        }
+        
+        .scheme-2 input:focus,
+        .scheme-2 select:focus {
+            outline: none;
+            border-color: #7BAE7F;
+            box-shadow: 0 0 0 2px rgba(123, 174, 127, 0.1);
+        }
+        
+        /* === 方案 3: 高端搜尋欄 === */
+        .scheme-3 {
+            position: relative;
+        }
+        
+        .scheme-3 .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .scheme-3 input {
+            width: 100%;
+            padding: 14px 44px 14px 16px;
+            border: 2px solid #87CEEB;
+            border-radius: 12px;
+            font-size: 1em;
+        }
+        
+        .scheme-3 input:focus {
+            outline: none;
+            border-color: #87CEEB;
+            box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.1);
+        }
+        
+        .scheme-3 .clear-btn {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #9A7A60;
+        }
+        
+        .scheme-3 .advanced {
+            color: #87CEEB;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        /* === 方案 4: 堆疊式 === */
+        .scheme-4 .section {
+            margin-bottom: 15px;
+        }
+        
+        .scheme-4 .section-label {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #5C3D2E;
+            margin-bottom: 8px;
+        }
+        
+        .scheme-4 input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #F5E6D3;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .scheme-4 .filters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .scheme-4 select {
+            padding: 10px 12px;
+            border: 1px solid #F5E6D3;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        /* === 方案 5: 單行式 === */
+        .scheme-5 .single-line {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .scheme-5 input,
+        .scheme-5 select {
+            padding: 10px 12px;
+            border: 1px solid #F5E6D3;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        .pros {
+            background: #E8F5E9;
+            border-left: 4px solid #7BAE7F;
+            padding: 12px 14px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        
+        .pros strong {
+            color: #7BAE7F;
+        }
+        
+        .cons {
+            background: #FFEBEE;
+            border-left: 4px solid #E8845A;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+        
+        .cons strong {
+            color: #E8845A;
+        }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #E8845A 0%, #E8845A 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #9A7A60;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐾 搜尋 UI 設計方案預覽</h1>
+        <p class="subtitle">請選擇最適合 Paw & Home 的設計方案</p>
+        
+        <div class="preview-grid">
+            <!-- 方案 1 -->
+            <div class="preview-card">
+                <h2><span class="emoji">🔍</span>方案 1️⃣：頂部搜尋欄</h2>
+                <p class="desc">Google 風格 - 搜尋框突出顯示在頂部，下方是篩選條件</p>
+                
+                <div class="preview-demo scheme-1">
+                    <input type="text" placeholder="🔎 搜尋毛孩名稱或品種...">
+                    <button style="width: 100%; padding: 10px; background: #E8845A; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">搜 尋</button>
+                    <div class="filters">
+                        <select>
+                            <option>全部類型</option>
+                            <option>🐶 狗狗</option>
+                            <option>🐱 貓咪</option>
+                        </select>
+                        <select>
+                            <option>全部城市</option>
+                            <option>台北市</option>
+                        </select>
+                        <select>
+                            <option>全部體型</option>
+                            <option>小型</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pros"><strong>✅ 優點：</strong>搜尋為主、一目瞭然、適合關鍵字搜尋</div>
+                <div class="cons"><strong>❌ 缺點：</strong>占用較多垂直空間</div>
+            </div>
+            
+            <!-- 方案 2 -->
+            <div class="preview-card">
+                <h2><span class="emoji">⚖️</span>方案 2️⃣：平衡式佈局</h2>
+                <p class="desc">搜尋框和篩選條件並排 - 緊湊且對稱</p>
+                
+                <div class="preview-demo scheme-2">
+                    <div class="grid-layout">
+                        <input type="text" placeholder="🔎 搜尋...">
+                        <select>
+                            <option>🐶 類型</option>
+                            <option>狗狗</option>
+                            <option>貓咪</option>
+                        </select>
+                        <select>
+                            <option>📍 城市</option>
+                            <option>台北市</option>
+                        </select>
+                        <select>
+                            <option>📏 體型</option>
+                            <option>小型</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pros"><strong>✅ 優點：</strong>平衡對稱、緊湊高效、易於瀏覽</div>
+                <div class="cons"><strong>❌ 缺點：</strong>手機上可能擁擠</div>
+            </div>
+            
+            <!-- 方案 3 -->
+            <div class="preview-card">
+                <h2><span class="emoji">✨</span>方案 3️⃣：高端搜尋欄</h2>
+                <p class="desc">帶圖標和清除按鈕的豐富搜尋框 - 高級感</p>
+                
+                <div class="preview-demo scheme-3">
+                    <div class="search-wrapper">
+                        <input type="text" placeholder="🔎 搜尋毛孩名稱或品種...">
+                        <span class="clear-btn">✕</span>
+                    </div>
+                    <div class="advanced">▼ 進階篩選</div>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #F5E6D3; display: none;">
+                        <select style="width: 100%; margin-bottom: 8px; padding: 8px 12px; border: 1px solid #F5E6D3; border-radius: 8px;">
+                            <option>🐶 類型</option>
+                        </select>
+                        <select style="width: 100%; margin-bottom: 8px; padding: 8px 12px; border: 1px solid #F5E6D3; border-radius: 8px;">
+                            <option>📍 城市</option>
+                        </select>
+                        <select style="width: 100%; padding: 8px 12px; border: 1px solid #F5E6D3; border-radius: 8px;">
+                            <option>📏 體型</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pros"><strong>✅ 優點：</strong>現代感、互動豐富、可收縮篩選</div>
+                <div class="cons"><strong>❌ 缺點：</strong>篩選選項需額外操作展開</div>
+            </div>
+            
+            <!-- 方案 4 -->
+            <div class="preview-card">
+                <h2><span class="emoji">📦</span>方案 4️⃣：堆疊式設計</h2>
+                <p class="desc">搜尋框和篩選完全分開 - 層次分明</p>
+                
+                <div class="preview-demo scheme-4">
+                    <div class="section">
+                        <div class="section-label">🔎 搜尋毛孩</div>
+                        <input type="text" placeholder="輸入名稱或品種...">
+                    </div>
+                    <div class="section">
+                        <div class="section-label">篩選條件</div>
+                        <div class="filters">
+                            <select>
+                                <option>🐶 類型</option>
+                            </select>
+                            <select>
+                                <option>📍 城市</option>
+                            </select>
+                            <select>
+                                <option>📏 體型</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pros"><strong>✅ 優點：</strong>層次清楚、視覺分離、容易理解</div>
+                <div class="cons"><strong>❌ 缺點：</strong>占用較多空間、篩選相對獨立</div>
+            </div>
+            
+            <!-- 方案 5 -->
+            <div class="preview-card">
+                <h2><span class="emoji">〰️</span>方案 5️⃣：單行式</h2>
+                <p class="desc">全部控件在同一行 - 極簡緊湊</p>
+                
+                <div class="preview-demo scheme-5">
+                    <div class="single-line">
+                        <input type="text" placeholder="🔎 搜尋...">
+                        <select>
+                            <option>🐶 類型</option>
+                        </select>
+                        <select>
+                            <option>📍 城市</option>
+                        </select>
+                        <select>
+                            <option>📏 體型</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pros"><strong>✅ 優點：</strong>極簡、空間利用率高</div>
+                <div class="cons"><strong>❌ 缺點：</strong>在寬螢幕上可能太擁擠</div>
+            </div>
+        </div>
+        
+        <div class="recommendation">
+            <span class="emoji">💡</span><span>推薦方案：方案 2️⃣（平衡式）+ 方案 3️⃣（高端搜尋欄）的結合</span>
+        </div>
+        
+        <div class="footer">
+            <p>💬 請告訴我您最喜歡的方案編號，我會幫您實現！</p>
+        </div>
+    </div>
+</body>
+</html>
