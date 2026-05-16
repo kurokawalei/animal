@@ -9,6 +9,9 @@ export default defineConfig({
   ],
   server: {
     host: '0.0.0.0',
+    watch: {
+      usePolling: true,
+    },
     proxy: {
       // Proxy COA open data to avoid CORS in development
       '/api/coa': {

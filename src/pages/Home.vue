@@ -147,7 +147,7 @@
           <div class="relative">
             <div class="card-illustrated p-8 bg-gradient-to-br from-primary/10 to-secondary/10">
               <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663636190019/HrRgiz8vkCidshPFr2vZfR/adopt-vs-buy-cLDJBGxfLPvvXEcYmVeKKL.webp"
+                src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80&auto=format&fit=crop"
                 alt="領養的毛孩"
                 class="w-full h-64 object-cover rounded-2xl mb-6"
               />

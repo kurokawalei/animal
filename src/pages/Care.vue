@@ -17,7 +17,7 @@
             </h1>
             <p class="text-dark/70 font-nunito leading-relaxed max-w-lg">
               領養只是開始，學習如何照顧你的毛孩才是長久之道。
-              這裡整理了狗狗、貓咪、兔子的完整照顧指南。
+              這裡整理了狗狗和貓咪的完整照顧指南。
             </p>
           </div>
           <div class="relative">
@@ -95,7 +95,6 @@
                 <th class="text-left py-3 px-4 text-dark font-bold">項目</th>
                 <th class="text-center py-3 px-4 text-primary font-bold">🐶 狗狗</th>
                 <th class="text-center py-3 px-4 text-secondary font-bold">🐱 貓咪</th>
-                <th class="text-center py-3 px-4 text-accent font-bold">🐰 兔子</th>
               </tr>
             </thead>
             <tbody>
@@ -103,7 +102,6 @@
                 <td class="py-3 px-4 text-dark font-bold">{{ row.item }}</td>
                 <td class="py-3 px-4 text-center text-dark/70">{{ row.dog }}</td>
                 <td class="py-3 px-4 text-center text-dark/70">{{ row.cat }}</td>
-                <td class="py-3 px-4 text-center text-dark/70">{{ row.rabbit }}</td>
               </tr>
             </tbody>
           </table>
@@ -147,7 +145,6 @@ const activeCategory = ref('dog')
 const categories = [
   { id: 'dog', label: '狗狗照顧', emoji: '🐶', color: '#E8845A', bg: 'rgba(232, 132, 90, 0.08)' },
   { id: 'cat', label: '貓咪照顧', emoji: '🐱', color: '#7BAE7F', bg: 'rgba(123, 174, 127, 0.08)' },
-  { id: 'rabbit', label: '兔子照顧', emoji: '🐰', color: '#87CEEB', bg: 'rgba(135, 206, 235, 0.1)' },
   { id: 'general', label: '通用知識', emoji: '💡', color: '#C3A882', bg: 'rgba(195, 168, 130, 0.1)' },
 ]
 
@@ -204,20 +201,7 @@ const knowledgeData = {
       tips: ['觀察貓咪的如廁習慣', '多貓家庭要確保每隻貓都能安心如廁'],
     },
   ],
-  rabbit: [
-    {
-      id: 'rabbit-food',
-      title: '兔子的飲食基礎',
-      summary: '兔子的消化系統很特殊，正確的飲食至關重要。',
-      icon: '🥬',
-      content: [
-        '牧草（80%）：提摩西草是成兔的主食，無限量供應。',
-        '新鮮蔬菜（15%）：每天提供多種深色葉菜。',
-        '飼料（5%）：成兔每天約 1-2 湯匙的高纖維兔飼料。',
-      ],
-      tips: ['兔子不能吃冰冷的蔬菜', '突然換食可能導致腸胃問題'],
-    },
-  ],
+
   general: [
     {
       id: 'first-time',
@@ -243,9 +227,9 @@ const currentCategory = computed(() => {
 })
 
 const referenceTable = [
-  { item: '餵食次數/天', dog: '2次', cat: '2次', rabbit: '無限牧草+2次蔬菜' },
-  { item: '健康檢查', dog: '每年1次', cat: '每年1次', rabbit: '每年1次' },
-  { item: '每日運動', dog: '30分-2小時', cat: '15-20分鐘互動', rabbit: '3-4小時自由活動' },
-  { item: '平均壽命', dog: '10-15年', cat: '12-18年', rabbit: '8-12年' },
+  { item: '餵食次數/天', dog: '2次', cat: '2次' },
+  { item: '健康檢查', dog: '每年1次', cat: '每年1次' },
+  { item: '每日運動', dog: '30分-2小時', cat: '15-20分鐘互動' },
+  { item: '平均壽命', dog: '10-15年', cat: '12-18年' },
 ]
 </script>

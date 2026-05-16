@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
-/* ── Google Fonts ── */
-/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Caveat:wght@400;700&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap'); */
+@theme {
+  --color-primary: #E8845A;
+  --color-secondary: #7BAE7F;
+  --color-accent: #87CEEB;
+  --color-dark: #5C3D2E;
+  --color-light: #FDF8F0;
+  --color-muted: #9A7A60;
+  --color-border: #F5E6D3;
+  --radius-lg: 1rem;
+}
 
-/* ── Design Tokens ── */
 :root {
   --primary: #E8845A;
   --secondary: #7BAE7F;
