@@ -11,10 +11,9 @@
           <span class="font-caveat text-2xl text-primary">領養代替購買</span>
           <h1 class="font-nunito text-5xl md:text-6xl lg:text-7xl font-black text-dark leading-tight mb-6">
             給每一隻
-            <br />
             <span class="text-primary relative">
               毛孩
-              <span class="absolute -bottom-2 left-0 right-0 h-1 bg-primary/30 rounded-full"></span>
+              <span class="absolute -bottom-2 left-0 right-0 h-1 bg-primary/30 rounded-full" style="transform: translateY(-10px);"></span>
             </span>
             <br />
             一個溫暖的家
